@@ -36,7 +36,7 @@ function App() {
         <HudBar timerText={gameState.timerText} score={gameState.score} remaining={gameState.remaining} />
 
         <section
-          className="relative z-[2] mx-auto mb-[clamp(58px,7.6svh,64px)] mt-[clamp(66px,9.8svh,82px)] flex min-h-[calc(100%-clamp(130px,17svh,146px))] w-full flex-col gap-[clamp(6px,1svh,8px)] pb-[clamp(122px,15svh,138px)]"
+          className="relative z-[2] mx-auto mb-[clamp(58px,7.6svh,64px)] mt-[clamp(96px,13svh,112px)] flex min-h-[calc(100%-clamp(160px,20svh,176px))] w-full flex-col gap-[clamp(6px,1svh,8px)] pb-[clamp(122px,15svh,138px)]"
           aria-label="Skull anatomy labeling game"
         >
           <SkullDiagram game={skullGame} state={gameState} />
