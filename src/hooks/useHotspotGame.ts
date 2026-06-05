@@ -9,7 +9,7 @@ import type {
 } from '../types/game'
 
 type Phase = 'start' | 'playing' | 'complete'
-type HotspotStatus = 'correct' | 'wrong' | 'missed'
+type HotspotStatus = 'correct' | 'done' | 'wrong' | 'missed'
 
 type HotspotFeedback = {
   status: HotspotStatus
@@ -17,6 +17,7 @@ type HotspotFeedback = {
 }
 
 const QUESTION_SECONDS = 8
+const LABEL_REVEAL_MS = 2000
 
 const shuffle = <T,>(values: T[]) => {
   const list = values.slice()
@@ -142,7 +143,7 @@ export function useHotspotGame(game: AnatomyGameConfig) {
   )
 
   const advanceQuestion = useCallback(
-    (nextScore: number, nextCorrectCount: number, nextBestStreak: number, nextAnsweredCount: number) => {
+    (nextScore: number, nextCorrectCount: number, nextBestStreak: number, nextAnsweredCount: number, delay = 700) => {
       window.setTimeout(() => {
         const nextIndex = currentIndex + 1
         if (nextIndex >= total) {
@@ -158,13 +159,13 @@ export function useHotspotGame(game: AnatomyGameConfig) {
         setHotspotFeedback((current) => {
           const kept: Record<string, HotspotFeedback> = {}
           Object.entries(current).forEach(([id, itemFeedback]) => {
-            if (itemFeedback.status === 'correct' && !itemFeedback.reveal) {
+            if (itemFeedback.status === 'done') {
               kept[id] = itemFeedback
             }
           })
           return kept
         })
-      }, 700)
+      }, delay)
     },
     [completeGame, currentIndex, total],
   )
@@ -193,14 +194,14 @@ export function useHotspotGame(game: AnatomyGameConfig) {
         setFeedbackTone('positive')
         setHotspotFeedback((current) => ({
           ...current,
-          [correctId]: { status: 'correct', reveal: true },
+          [correctId]: { status: 'done', reveal: true },
         }))
         const timer = window.setTimeout(() => {
           setHotspotFeedback((current) => ({
             ...current,
-            [correctId]: { status: 'correct', reveal: false },
+            [correctId]: { status: 'done', reveal: false },
           }))
-        }, 5000)
+        }, LABEL_REVEAL_MS)
         revealTimersRef.current.push(timer)
         advanceQuestion(nextScore, nextCorrectCount, nextBestStreak, nextAnsweredCount)
       } else {
@@ -213,16 +214,16 @@ export function useHotspotGame(game: AnatomyGameConfig) {
           ...(clickedItem ? { [clickedItem.id]: { status: 'wrong', reveal: false } } : {}),
           [correctId]: { status: 'correct', reveal: true },
         }))
-        setAnswerLog((entries) => [
-          ...entries,
-          { item: currentItem, ok: false, note: clickedItem ? `clicked ${clickedItem.label}` : 'wrong answer' },
-        ])
 
         if (selectedMode === 'hard') {
           const nextAnsweredCount = answeredCount + 1
           setAnsweredCount(nextAnsweredCount)
           setMissedItems((items) => [...items, { item: currentItem, index: activeItemIndex }])
-          advanceQuestion(score, correctCount, bestStreak, nextAnsweredCount)
+          setAnswerLog((entries) => [
+            ...entries,
+            { item: currentItem, ok: false, note: clickedItem ? `clicked ${clickedItem.label}` : 'wrong answer' },
+          ])
+          advanceQuestion(score, correctCount, bestStreak, nextAnsweredCount, 900)
           return
         }
 
@@ -265,9 +266,24 @@ export function useHotspotGame(game: AnatomyGameConfig) {
 
   const handleHotspotClick = useCallback(
     (index: number) => {
+      const clickedItem = game.items[index]
+      if (clickedItem && hotspotFeedback[clickedItem.id]?.status === 'done') {
+        setHotspotFeedback((current) => ({
+          ...current,
+          [clickedItem.id]: { status: 'done', reveal: true },
+        }))
+        const timer = window.setTimeout(() => {
+          setHotspotFeedback((current) => ({
+            ...current,
+            [clickedItem.id]: { status: 'done', reveal: false },
+          }))
+        }, LABEL_REVEAL_MS)
+        revealTimersRef.current.push(timer)
+        return
+      }
       answerCurrent(index === activeItemIndex, index)
     },
-    [activeItemIndex, answerCurrent],
+    [activeItemIndex, answerCurrent, game.items, hotspotFeedback],
   )
 
   const handleOptionClick = useCallback(
@@ -291,7 +307,7 @@ export function useHotspotGame(game: AnatomyGameConfig) {
       ...current,
       [currentItem.id]: { status: 'missed', reveal: true },
     }))
-    advanceQuestion(score, correctCount, bestStreak, nextAnsweredCount)
+    advanceQuestion(score, correctCount, bestStreak, nextAnsweredCount, 500)
   }, [
     activeItemIndex,
     advanceQuestion,

@@ -12,7 +12,7 @@ type QuizPanelProps = {
 
 export function QuizPanel({ state, logOpen, onToggleLog }: QuizPanelProps) {
   return (
-    <aside className="relative order-[-1] flex min-h-[clamp(62px,8svh,68px)] flex-col gap-[clamp(4px,0.8svh,5px)] rounded-[18px] border border-slate-200/80 bg-white/95 p-[clamp(10px,1.6svh,12px)] text-slate-900 shadow-[0_12px_30px_rgba(15,23,42,0.10)]">
+    <aside className="order-[-1] flex min-h-[clamp(62px,8svh,68px)] flex-col gap-[clamp(4px,0.8svh,5px)] rounded-[18px] border border-slate-200/80 bg-white/95 p-[clamp(10px,1.6svh,12px)] text-slate-900 shadow-[0_12px_30px_rgba(15,23,42,0.10)]">
       <p className="m-0 text-[0.82rem] font-extrabold uppercase tracking-[0.08em] text-[#007AFF]">Hotspot Click</p>
       <h2 className="m-0 text-[clamp(1.05rem,4.5vw,1.2rem)] font-extrabold leading-[1.35] tracking-[-0.02em]">
         {state.promptText}
@@ -26,7 +26,7 @@ export function QuizPanel({ state, logOpen, onToggleLog }: QuizPanelProps) {
       </div>
       <div
         className={cn(
-          'absolute bottom-[clamp(58px,7.6svh,64px)] left-2.5 z-30 min-h-[clamp(40px,5.2svh,44px)] w-[calc(100%-20px)] rounded-[14px] border p-3 text-sm leading-[1.3] shadow-[0_8px_20px_rgba(15,23,42,0.06)]',
+          'absolute bottom-[clamp(68px,9svh,78px)] left-2.5 z-30 min-h-[clamp(40px,5.2svh,44px)] w-[calc(100%-20px)] rounded-[14px] border p-3 text-sm leading-[1.3] shadow-[0_8px_20px_rgba(15,23,42,0.06)]',
           state.feedbackTone === 'positive' && 'border-[#34C759] bg-[#EAF8EF] text-[#167A35]',
           state.feedbackTone === 'negative' && 'border-[#FF3B30] bg-[#FFF0EF] text-[#B42318]',
           state.feedbackTone === 'default' && 'border-slate-200 bg-white text-slate-500',

@@ -24,7 +24,7 @@ export const gameModes: GameModeConfig[] = [
     id: 'practice',
     icon: '📖',
     name: 'Practice',
-    description: 'Labels stay visible for study.',
+    description: 'Follow one label at a time.',
   },
   {
     id: 'hard',

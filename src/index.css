@@ -30,18 +30,43 @@ button {
   font: inherit;
 }
 
-@keyframes shake {
+.diagram-stage-exact {
+  min-height: clamp(292px, calc(min(852px, 100svh) - 392px), 430px);
+}
+
+.diagram-inner-exact {
+  width: 170%;
+  flex: 0 0 170%;
+}
+
+@media (max-height: 720px) {
+  .diagram-inner-exact {
+    width: 158%;
+    flex-basis: 158%;
+  }
+}
+
+@media (max-height: 640px) {
+  .diagram-inner-exact {
+    width: 145%;
+    flex-basis: 145%;
+  }
+}
+
+@keyframes dot-shiver {
   0%,
   100% {
-    transform: translate(-50%, -50%) translateX(0);
+    transform: scale(1);
+    filter: brightness(1);
   }
-  20%,
-  60% {
-    transform: translate(-50%, -50%) translateX(-8px);
+  25%,
+  75% {
+    transform: scale(0.94);
+    filter: brightness(0.96);
   }
-  40%,
-  80% {
-    transform: translate(-50%, -50%) translateX(8px);
+  50% {
+    transform: scale(1.06);
+    filter: brightness(1.04);
   }
 }
 
