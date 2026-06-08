@@ -12,7 +12,7 @@ export function GameButton({ children, className, variant = 'primary', ...props 
     <button
       className={cn(
         'min-h-11 cursor-pointer rounded-full px-7 py-3 font-extrabold transition duration-150 hover:scale-[1.04] active:scale-95',
-        variant === 'primary' && 'bg-[#007AFF] text-white shadow-[0_10px_22px_rgba(0,122,255,0.22)]',
+        variant === 'primary' && 'bg-[#007AFF] text-white',
         variant === 'secondary' && 'border border-slate-200 bg-[#EEF5FF] text-[#007AFF]',
         variant === 'compact' &&
           'min-h-10 rounded-[14px] border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-[0_8px_18px_rgba(15,23,42,0.06)]',
