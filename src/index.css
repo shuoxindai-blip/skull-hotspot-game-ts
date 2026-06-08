@@ -33,7 +33,7 @@ button {
 }
 
 .diagram-stage-exact {
-  min-height: clamp(292px, calc(min(852px, 100svh) - 392px), 430px);
+  min-height: 0;
 }
 
 .diagram-inner-exact {

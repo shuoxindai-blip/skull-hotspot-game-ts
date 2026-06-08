@@ -13,7 +13,7 @@ export function HudBar({ title, timerText, score, remaining }: HudBarProps) {
   ] as const
 
   return (
-    <header className="pointer-events-none absolute left-1/2 top-0 z-20 grid w-full max-w-[480px] -translate-x-1/2 gap-[clamp(6px,1svh,8px)] px-3 py-[clamp(8px,1.4svh,10px)]">
+    <header className="pointer-events-none relative z-20 mx-auto grid w-full max-w-[480px] gap-[clamp(6px,1svh,8px)] px-3 py-[clamp(8px,1.4svh,10px)]">
       <h1 className="m-0 text-center text-[clamp(1rem,4.2vw,1.12rem)] font-extrabold leading-tight tracking-[-0.02em] text-slate-900">
         {title.replace(' Challenge', '')} <span className="text-[#007AFF]">Challenge</span>
       </h1>

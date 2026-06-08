@@ -42,7 +42,7 @@ function App() {
     <main className="min-h-svh w-screen bg-[#F3F6FB]">
       <div className="mx-auto min-h-svh w-[min(393px,100vw)] bg-[#F3F6FB]">
         <div
-          className="relative h-[min(852px,100svh)] overflow-visible touch-manipulation"
+          className="relative flex min-h-[min(852px,100svh)] flex-col overflow-visible touch-manipulation"
           onClick={handleShellClick}
         >
           <button
@@ -63,7 +63,7 @@ function App() {
           <HudBar title={gameConfig.title} timerText={gameState.timerText} score={gameState.score} remaining={gameState.remaining} />
 
           <section
-            className="relative z-[2] mx-auto mb-[clamp(58px,7.6svh,64px)] mt-[clamp(116px,15svh,124px)] flex min-h-[calc(100%-clamp(180px,22svh,188px))] w-full flex-col gap-[clamp(6px,1svh,8px)] pb-[clamp(122px,15svh,138px)]"
+            className="relative z-[2] mx-auto mb-[clamp(8px,1.6svh,14px)] grid min-h-0 flex-1 w-full grid-rows-[auto_minmax(0,1fr)_auto] gap-[clamp(6px,1svh,8px)]"
             aria-label={`${gameConfig.topic} labeling game`}
           >
             <SkullDiagram game={gameConfig} state={gameState} />

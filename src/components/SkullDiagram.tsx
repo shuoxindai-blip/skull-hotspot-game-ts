@@ -31,8 +31,8 @@ export function SkullDiagram({ game, state }: SkullDiagramProps) {
   }
 
   return (
-    <div className="relative flex min-h-0 flex-col gap-0 bg-transparent p-0">
-      <div className="diagram-stage-exact relative overflow-hidden border border-slate-900/5 bg-white shadow-[inset_0_-1px_0_rgba(15,23,42,0.04)]">
+    <div className="relative flex min-h-0 flex-1 flex-col gap-0 bg-transparent p-0">
+      <div className="diagram-stage-exact relative min-h-0 flex-1 overflow-hidden border border-slate-900/5 bg-white shadow-[inset_0_-1px_0_rgba(15,23,42,0.04)]">
         <div className="absolute inset-2 flex items-center justify-center">
           <div className="diagram-inner-exact relative flex max-w-none items-center justify-center" style={imageLayout}>
             <img
