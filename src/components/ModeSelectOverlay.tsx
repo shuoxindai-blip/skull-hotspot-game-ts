@@ -12,7 +12,7 @@ type ModeSelectOverlayProps = {
 
 export function ModeSelectOverlay({ game, selectedMode, onSelectMode, onStart }: ModeSelectOverlayProps) {
   return (
-    <section className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#F6F9FD]/95 p-[clamp(12px,2.4svh,20px)] text-center text-slate-900">
+    <section className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#F3F6FB] p-[clamp(12px,2.4svh,20px)] text-center text-slate-900">
       <div className="w-[calc(100%-40px)]">
         <div className="grid gap-[clamp(20px,3.6svh,30px)]">
           <div className="grid gap-[clamp(7px,1.1svh,10px)]">
@@ -47,7 +47,7 @@ export function ModeSelectOverlay({ game, selectedMode, onSelectMode, onStart }:
         </div>
 
         <div className="mt-[clamp(20px,3.4svh,30px)] flex justify-center">
-          <GameButton className="text-[clamp(0.88rem,3.6vw,1rem)]" onClick={onStart}>
+          <GameButton className="text-[clamp(0.88rem,3.6vw,1rem)] font-extrabold text-white" onClick={onStart}>
             Start Quiz
           </GameButton>
         </div>

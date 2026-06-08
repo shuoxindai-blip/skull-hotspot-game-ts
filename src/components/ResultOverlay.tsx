@@ -22,7 +22,7 @@ export function ResultOverlay({ result, missedItems, reviewOpen, onPlayAgain, on
   ] as const
 
   return (
-    <section className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#F6F9FD]/95 p-[clamp(12px,2.4svh,20px)] text-center text-slate-900">
+    <section className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#F3F6FB] p-[clamp(12px,2.4svh,20px)] text-center text-slate-900">
       <div className="w-[calc(100%-40px)]">
         <h1 className="m-0 text-[clamp(1.72rem,7.3vw,2.2rem)] font-extrabold leading-[1.05] tracking-[-0.04em]">
           {title}
@@ -62,11 +62,11 @@ export function ResultOverlay({ result, missedItems, reviewOpen, onPlayAgain, on
         </div>
 
         <div className="mt-[clamp(20px,3.4svh,30px)] flex flex-wrap justify-center gap-3">
-          <GameButton className="text-[clamp(0.88rem,3.6vw,1rem)]" onClick={onPlayAgain}>
+          <GameButton className="text-[clamp(0.88rem,3.6vw,1rem)] font-extrabold text-white" onClick={onPlayAgain}>
             Play Again
           </GameButton>
           {missedItems.length > 0 && (
-            <GameButton variant="secondary" className="text-[clamp(0.88rem,3.6vw,1rem)]" onClick={onToggleReview}>
+            <GameButton className="text-[clamp(0.88rem,3.6vw,1rem)] font-extrabold text-white" onClick={onToggleReview}>
               Review Misses
             </GameButton>
           )}

@@ -39,13 +39,12 @@ function App() {
   }
 
   return (
-    <main className="min-h-svh">
-      <div className="mx-auto w-[min(393px,100vw)]">
+    <main className="min-h-svh w-screen bg-[#F3F6FB]">
+      <div className="mx-auto min-h-svh w-[min(393px,100vw)] bg-[#F3F6FB]">
         <div
-          className="relative h-[min(852px,100svh)] overflow-hidden bg-gradient-to-b from-[#F8FBFF] via-[#F3F6FB] to-[#EEF3F8] touch-manipulation"
+          className="relative h-[min(852px,100svh)] overflow-visible touch-manipulation"
           onClick={handleShellClick}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(0,122,255,0.08)_1px,transparent_1px)] bg-[length:30px_30px] opacity-30" />
           <button
             className="fixed top-4 z-[150] flex h-8 w-8 items-center justify-center rounded-full border border-slate-900/8 bg-white/90 text-[1.25rem] font-extrabold leading-none text-[#007AFF] shadow-[0_10px_24px_rgba(15,23,42,0.10)] backdrop-blur"
             style={{ left: 'max(1rem, calc((100vw - 393px) / 2 + 1rem))' }}
@@ -95,7 +94,9 @@ function App() {
             />
           )}
         </div>
-        <OtherGamesSection currentGameId={gameConfig.id} />
+        <div className="bg-[#F3F6FB]">
+          <OtherGamesSection currentGameId={gameConfig.id} />
+        </div>
       </div>
     </main>
   )
