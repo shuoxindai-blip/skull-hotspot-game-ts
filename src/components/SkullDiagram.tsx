@@ -23,11 +23,18 @@ function getLabelStyle(item: AnatomyGameConfig['items'][number]) {
 }
 
 export function SkullDiagram({ game, state }: SkullDiagramProps) {
+  const imageLayout = {
+    aspectRatio: game.asset.aspectRatio ?? '700 / 550',
+    width: game.asset.width ?? '170%',
+    flexBasis: game.asset.width ?? '170%',
+    transform: `translateY(${game.asset.translateY ?? '-5%'})`,
+  }
+
   return (
     <div className="relative flex min-h-0 flex-col gap-0 bg-transparent p-0">
       <div className="diagram-stage-exact relative overflow-hidden border border-slate-900/5 bg-white shadow-[inset_0_-1px_0_rgba(15,23,42,0.04)]">
         <div className="absolute inset-2 flex items-center justify-center">
-          <div className="diagram-inner-exact relative flex aspect-[700/550] max-w-none translate-y-[-5%] items-center justify-center">
+          <div className="diagram-inner-exact relative flex max-w-none items-center justify-center" style={imageLayout}>
             <img
               className="block h-full w-full select-none object-contain drop-shadow-[0_10px_18px_rgba(15,23,42,0.12)]"
               src={game.asset.src}

@@ -30,6 +30,9 @@ export type AnatomyGameConfig = {
   asset: {
     src: string
     alt: string
+    aspectRatio?: string
+    width?: string
+    translateY?: string
   }
   items: AnatomyQuestion[]
 }

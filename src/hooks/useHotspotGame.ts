@@ -78,7 +78,7 @@ export function useHotspotGame(game: AnatomyGameConfig) {
   const instructionText =
     phase === 'playing' && currentItem
       ? currentItem.explanation
-      : 'Tap the matching structure on the skull diagram. If you miss, the correct spot will be shown for review.'
+      : 'Tap the matching structure on the diagram. If you miss, the correct spot will be shown for review.'
   const timerText = selectedMode === 'timed' && phase === 'playing' ? formatTime(timeLeft * 1000) : formatTime(elapsedTime)
 
   const resetHotspotFeedback = useCallback(() => {

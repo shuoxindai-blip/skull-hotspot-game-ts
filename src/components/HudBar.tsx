@@ -1,10 +1,11 @@
 type HudBarProps = {
+  title: string
   timerText: string
   score: number
   remaining: number
 }
 
-export function HudBar({ timerText, score, remaining }: HudBarProps) {
+export function HudBar({ title, timerText, score, remaining }: HudBarProps) {
   const items = [
     ['Time', timerText],
     ['Score', score],
@@ -14,7 +15,7 @@ export function HudBar({ timerText, score, remaining }: HudBarProps) {
   return (
     <header className="pointer-events-none absolute left-1/2 top-0 z-20 grid w-full max-w-[480px] -translate-x-1/2 gap-[clamp(6px,1svh,8px)] px-3 py-[clamp(8px,1.4svh,10px)]">
       <h1 className="m-0 text-center text-[clamp(1rem,4.2vw,1.12rem)] font-extrabold leading-tight tracking-[-0.02em] text-slate-900">
-        Skull Anatomy <span className="text-[#007AFF]">Challenge</span>
+        {title.replace(' Challenge', '')} <span className="text-[#007AFF]">Challenge</span>
       </h1>
       <div className="grid min-w-0 grid-cols-3 gap-2">
         {items.map(([label, value]) => (
