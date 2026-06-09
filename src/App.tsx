@@ -2,7 +2,6 @@ import { useRef, useState } from 'react'
 import { AnswerLogDrawer } from './components/AnswerLogDrawer'
 import { HudBar } from './components/HudBar'
 import { ModeSelectOverlay } from './components/ModeSelectOverlay'
-import { OtherGamesSection } from './components/OtherGamesSection'
 import { QuizPanel } from './components/QuizPanel'
 import { ResultOverlay } from './components/ResultOverlay'
 import { SkullDiagram } from './components/SkullDiagram'
@@ -46,7 +45,7 @@ function App() {
           onClick={handleShellClick}
         >
           <button
-            className="fixed top-4 z-[150] flex h-8 w-8 items-center justify-center rounded-full border border-slate-900/8 bg-white/90 text-[1.25rem] font-extrabold leading-none text-[#007AFF] shadow-[0_10px_24px_rgba(15,23,42,0.10)] backdrop-blur"
+            className="fixed top-4 z-[150] flex h-8 w-8 items-center justify-center rounded-full border border-slate-900/8 bg-white/90 text-[1.35rem] font-bold leading-none text-[#007AFF] shadow-[0_10px_24px_rgba(15,23,42,0.10)] backdrop-blur"
             style={{ left: 'max(1rem, calc((100vw - 393px) / 2 + 1rem))' }}
             type="button"
             aria-label="Back to games"
@@ -58,7 +57,7 @@ function App() {
               event.stopPropagation()
             }}
           >
-            &lt;
+            ‹
           </button>
           <HudBar title={gameConfig.title} timerText={gameState.timerText} score={gameState.score} remaining={gameState.remaining} />
 
@@ -93,9 +92,6 @@ function App() {
               onToggleReview={() => setReviewOpen((open) => !open)}
             />
           )}
-        </div>
-        <div className="bg-[#F3F6FB]">
-          <OtherGamesSection currentGameId={gameConfig.id} />
         </div>
       </div>
     </main>
